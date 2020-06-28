@@ -5,6 +5,8 @@ import 'package:Team_Furious/Models/order_model.dart';
 import 'package:Team_Furious/Services/orderService.dart';
 import 'package:provider/provider.dart';
 
+import '../profileImageUpload.dart';
+
 class OrderForm extends StatefulWidget {
   final bool update;
 
@@ -478,13 +480,61 @@ class _OrderFormState extends State<OrderForm> {
   }
 
   Widget img(Order order) {
-    return CircleAvatar(
-      radius: 80.0,
-      backgroundImage: widget.update
-          ? NetworkImage(order.image)
-          : NetworkImage(
-              'https://www.simrad-yachting.com/assets/img/default-product-img.png'),
-      backgroundColor: Colors.transparent,
-    );
+    if (widget.update) {
+      return CircleAvatar(
+        radius: 80.0,
+        backgroundImage: widget.update
+            ? NetworkImage(order.image)
+            : NetworkImage(
+                'https://www.simrad-yachting.com/assets/img/default-product-img.png'),
+        backgroundColor: Colors.transparent,
+      );
+    } else {
+      if (image == null) {
+        image =
+            "https://www.simrad-yachting.com/assets/img/default-product-img.png";
+      }
+      return Stack(
+        children: <Widget>[
+          Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: Container(
+              width: 160.0,
+              height: 160.0,
+              decoration: new BoxDecoration(
+                  borderRadius: new BorderRadius.circular(80.0),
+                  image: new DecorationImage(
+                      image: new NetworkImage(image), fit: BoxFit.cover)),
+            ),
+          ),
+          IconButton(
+            padding: EdgeInsets.fromLTRB(100.0, 130.0, 0.0, 0.0),
+            icon: Icon(Icons.camera_alt),
+            tooltip: 'Click to add a new Picture',
+            color: Colors.redAccent,
+            iconSize: 50.0,
+            onPressed: () async {
+              print("Add a new foto");
+              final result = await Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => ProfileImageUpload()),
+              );
+              if (result != null) {
+                setState(() {
+                  image = result;
+                });
+              }
+
+              // Navigator.push(
+              //   context,
+              //   MaterialPageRoute(
+              //       builder: (context) =>
+              //           ImageUpload(widget.user, widget.uindex)),
+              // );
+            },
+          ),
+        ],
+      );
+    }
   }
 }
