@@ -113,8 +113,7 @@ class _InstaHomeState extends State<InstaHome> {
                     color: Colors.red,
                   ),
                   onPressed: () {
-                    Navigator.of(context).push(MaterialPageRoute(
-                        builder: (context) => new OrderForm(update: false)));
+                    Navigator.of(context).pushNamed('/save');
                   },
                 ),
                 new IconButton(

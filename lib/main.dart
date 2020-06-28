@@ -1,6 +1,7 @@
 import 'package:Team_Furious/Models/user_model.dart';
 import 'package:Team_Furious/insta_home.dart';
 import 'package:Team_Furious/profile.dart';
+import 'package:Team_Furious/project_form/orderForm.dart';
 import 'package:Team_Furious/services/orderService.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -26,6 +27,9 @@ class MyApp extends StatelessWidget {
         routes: <String, WidgetBuilder>{
           '/dashboard': (BuildContext context) => new InstaHome(),
           '/profile': (BuildContext context) => new ProfileManagement(),
+          '/save': (BuildContext context) => new OrderForm(
+                update: false,
+              ),
         },
         debugShowCheckedModeBanner: false,
         theme: new ThemeData(

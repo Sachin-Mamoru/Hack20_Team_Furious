@@ -4,16 +4,12 @@ import 'package:Team_Furious/Models/order_model.dart';
 import 'package:Team_Furious/Services/orderService.dart';
 import 'package:provider/provider.dart';
 
-class OrderForm extends StatefulWidget {
-  final bool update;
-
-  OrderForm({this.update});
-
+class OrderFormTwo extends StatefulWidget {
   @override
-  _OrderFormState createState() => _OrderFormState();
+  _OrderFormTwoState createState() => _OrderFormTwoState();
 }
 
-class _OrderFormState extends State<OrderForm> {
+class _OrderFormTwoState extends State<OrderFormTwo> {
   Widget formBody(Order order, OrderService orderService) {
     return Column(
       children: <Widget>[
@@ -180,9 +176,9 @@ class _OrderFormState extends State<OrderForm> {
 
   @override
   Widget build(BuildContext context) {
-    OrderService orderService = Provider.of<OrderService>(context);
+    var orderService2 = Provider.of<OrderService>(context);
 
-    Order order = orderService.getOrder();
+    Order order = orderService2.getOrder();
 
     return Scaffold(
       appBar: AppBar(
@@ -198,7 +194,7 @@ class _OrderFormState extends State<OrderForm> {
                   ),
                   Center(
                     child: Container(
-                      child: formBody(order, orderService),
+                      child: formBody(order, orderService2),
                       width: 300.0,
                       margin: EdgeInsets.all(20.0),
                     ),
