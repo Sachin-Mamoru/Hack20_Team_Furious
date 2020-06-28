@@ -1,4 +1,3 @@
-import 'package:Team_Furious/insta_body.dart';
 import 'package:Team_Furious/project_form/orderForm.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
@@ -6,6 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
 import 'Models/user_model.dart';
+import 'insta_bodyPart1.dart';
 
 class InstaHome extends StatefulWidget {
   @override
@@ -66,13 +66,17 @@ class _InstaHomeState extends State<InstaHome> {
     backgroundColor: new Color(0xfff8faf8),
     centerTitle: true,
     elevation: 1.0,
-    leading: new Icon(Icons.camera_alt),
+    // leading: new Icon(Icons.camera_alt),
     title: SizedBox(
         height: 35.0, child: Image.asset("assets/images/insta_logo.png")),
     actions: <Widget>[
       Padding(
         padding: const EdgeInsets.only(right: 12.0),
-        child: Icon(Icons.send),
+        child: new IconButton(
+            icon: Icon(Icons.more_vert),
+            onPressed: () async {
+              print("Adding Data..!!!");
+            }),
       )
     ],
   );
@@ -81,7 +85,7 @@ class _InstaHomeState extends State<InstaHome> {
   Widget build(BuildContext context) {
     return new Scaffold(
         appBar: topBar,
-        body: new InstaBody(),
+        body: new AddOrderMain(),
         bottomNavigationBar: new Container(
           color: Colors.white,
           height: 50.0,
