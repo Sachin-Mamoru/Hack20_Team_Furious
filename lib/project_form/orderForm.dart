@@ -43,7 +43,23 @@ class _OrderFormState extends State<OrderForm> {
       child: Consumer<OrderService>(
         builder: (context, provider, child) => Scaffold(
           appBar: AppBar(
-            title: Text('Project Form'),
+            backgroundColor: new Color(0xfff8faf8),
+            centerTitle: true,
+            elevation: 1.0,
+            // leading: new Icon(Icons.camera_alt),
+            title: SizedBox(
+                height: 35.0,
+                child: Image.asset("assets/images/insta_logo.png")),
+            actions: <Widget>[
+              Padding(
+                padding: const EdgeInsets.only(right: 12.0),
+                child: new IconButton(
+                    icon: Icon(Icons.more_vert),
+                    onPressed: () async {
+                      print("Adding Data..!!!");
+                    }),
+              )
+            ],
           ),
           body: SingleChildScrollView(
             child: Column(

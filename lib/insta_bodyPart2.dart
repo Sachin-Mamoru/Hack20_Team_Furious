@@ -74,28 +74,17 @@ class CategeoryCard extends StatelessWidget {
                         new SizedBox(
                           width: 8.0,
                         ),
-                        new Container(
-                          decoration: new BoxDecoration(
-                            borderRadius: new BorderRadius.circular(16.0),
-                            color: Colors.yellow[700],
-                          ),
+                        new RaisedButton(
+                          onPressed: () {
+                            print("object");
+                          },
+                          color: Colors.yellow[700],
                           child: Text(dc.data['name'],
                               style: TextStyle(
                                   fontSize: 15.0,
                                   fontWeight: FontWeight.bold,
                                   color: Colors.black)),
-                        ),
-                        // new RaisedButton(
-                        //   onPressed: () {
-                        //     print("object");
-                        //   },
-                        //   color: Colors.yellow[700],
-                        // child: Text(dc.data['name'],
-                        //     style: TextStyle(
-                        //         fontSize: 15.0,
-                        //         fontWeight: FontWeight.bold,
-                        //         color: Colors.black)),
-                        // )
+                        )
                       ],
                     ),
                     new RaisedButton(
