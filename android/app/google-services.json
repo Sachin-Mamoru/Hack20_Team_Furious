@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "214026733865",
+    "firebase_url": "https://hack20-team-furious-aeb87.firebaseio.com",
+    "project_id": "hack20-team-furious-aeb87",
+    "storage_bucket": "hack20-team-furious-aeb87.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:214026733865:android:b306104c982874c9c24f38",
+        "android_client_info": {
+          "package_name": "com.example.Team_Furious"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "214026733865-es1eif5otjoti7lm56dimeqgseqops71.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.Team_Furious",
+            "certificate_hash": "922183eab0c79b7e185b9f83d59d45620b37438c"
+          }
+        },
+        {
+          "client_id": "214026733865-ktnqrjflk5rh1923q0ldq2c41vdqj26n.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAveu-98xvb-hdUkqsrZ10_-0InJTZ21Zg"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "214026733865-ktnqrjflk5rh1923q0ldq2c41vdqj26n.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

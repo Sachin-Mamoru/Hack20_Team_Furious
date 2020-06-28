@@ -1,6 +1,7 @@
 import 'package:Team_Furious/insta_stories.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 
 class InstaList extends StatelessWidget {
   @override
@@ -46,9 +47,16 @@ class InstaList extends StatelessWidget {
                         ],
                       ),
                       new IconButton(
-                        icon: Icon(Icons.more_vert),
-                        onPressed: null,
-                      )
+                          icon: Icon(Icons.more_vert),
+                          onPressed: () async {
+                            print("Adding Data..!!!");
+                            await Firestore.instance
+                                .collection('books')
+                                .document()
+                                .setData(
+                                    {'title': 'title', 'author': 'author'});
+                            print("Done------------");
+                          }),
                     ],
                   ),
                 ),

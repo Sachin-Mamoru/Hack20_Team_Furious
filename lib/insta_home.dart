@@ -35,31 +35,42 @@ class InstaHome extends StatelessWidget {
                   icon: Icon(
                     Icons.home,
                   ),
-                  onPressed: () {},
+                  onPressed: () {
+                    print("object");
+                  },
                 ),
                 new IconButton(
                   icon: Icon(
                     Icons.search,
                   ),
-                  onPressed: null,
+                  onPressed: () {
+                    print("object");
+                  },
                 ),
                 new IconButton(
                   icon: Icon(
                     Icons.add_box,
+                    color: Colors.red,
                   ),
-                  onPressed: null,
+                  onPressed: () {
+                    print("object");
+                  },
                 ),
                 new IconButton(
                   icon: Icon(
                     Icons.favorite,
                   ),
-                  onPressed: null,
+                  onPressed: () {
+                    print("object");
+                  },
                 ),
                 new IconButton(
                   icon: Icon(
                     Icons.account_box,
                   ),
-                  onPressed: null,
+                  onPressed: () {
+                    print("object");
+                  },
                 ),
               ],
             ),
