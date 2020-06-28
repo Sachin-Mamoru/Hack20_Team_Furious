@@ -85,7 +85,7 @@ class GSignInState extends State<GSignIn> {
         new Container(
           decoration: new BoxDecoration(
             image: new DecorationImage(
-              image: new AssetImage("assets/back.png"),
+              image: new AssetImage("assets/images/back.png"),
               fit: BoxFit.cover,
             ),
           ),
