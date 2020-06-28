@@ -14,6 +14,37 @@ class OrderService with ChangeNotifier {
     notifyListeners();
   }
 
+  Future<bool> createOrder(objective, name, image, contact_name, aim, email,
+      phone, price, service) async {
+    try {
+      String userId;
+      var FirebaseAuth; //erffffffffffffffffffffffffffffffffffffffffffffffffff
+      await FirebaseAuth.instance
+          .currentUser()
+          .then((response) => {userId = response.uid});
+
+      var Firestore; //dwfwdffffffffffffffffffffffffffffffffff
+      var document = await Firestore.instance.collection('Orders').add({
+        'objective': objective,
+        'name': name,
+        'image': image,
+        'contact_name': contact_name,
+        'aim': aim,
+        'email': email,
+        'date': DateTime.now(),
+        'phone': phone,
+        'price': price,
+        'service': service,
+        'userId': userId,
+      });
+      setOrderId(document.documentID);
+      return true;
+    } catch (e) {
+      print(e);
+      return false;
+    }
+  }
+
   Future<bool> setOrder() async {
     try {
       var Firestore; //wefweffewrfweffwfefwefwefewfeeeeeeeeeeeeeeeeee
@@ -47,14 +78,25 @@ class OrderService with ChangeNotifier {
     }
   }
 
-  Future<bool> updateOrder(quantity, price, status) async {
+  Future<bool> updateOrder(objective, name, image, contact_name, aim, email,
+      phone, price, service) async {
     try {
       var Firestore; /////////////////////////////////////////////////////////////////////
       await Firestore.instance
           .collection('Orders')
           .document(getOrderId())
-          .updateData(
-              {'quantity': quantity, 'pricePerKg': price, 'status': status});
+          .updateData({
+        'objective': objective,
+        'name': name,
+        'image': image,
+        'contact_name': contact_name,
+        'aim': aim,
+        'email': email,
+        'date': DateTime.now(),
+        'phone': phone,
+        'price': price,
+        'service': service,
+      });
     } catch (e) {
       print(e);
       return false;
