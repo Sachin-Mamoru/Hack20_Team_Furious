@@ -476,10 +476,19 @@ class _ProfileManagementState extends State<ProfileManagement> {
         FocusScope.of(context).requestFocus(new FocusNode());
       },
       child: new Scaffold(
-        appBar: AppBar(
-          automaticallyImplyLeading: true,
-          title: Text("Your Profile"),
+        appBar: new AppBar(
+          backgroundColor: new Color(0xfff8faf8),
           centerTitle: true,
+          elevation: 1.0,
+          leading: new IconButton(
+            onPressed: () {
+              Navigator.pop(context);
+            },
+            icon: Icon(Icons.arrow_back_ios),
+            color: Colors.blue,
+          ),
+          title: SizedBox(
+              height: 35.0, child: Image.asset("assets/images/insta_logo.png")),
         ),
         body: Container(
           decoration: BoxDecoration(),

@@ -1,7 +1,66 @@
 import 'package:Team_Furious/insta_body.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
-class InstaHome extends StatelessWidget {
+import 'Models/user_model.dart';
+
+class InstaHome extends StatefulWidget {
+  @override
+  _InstaHomeState createState() => _InstaHomeState();
+}
+
+class _InstaHomeState extends State<InstaHome> {
+  @override
+  void initState() {
+    super.initState();
+    getUser();
+  }
+
+  FirebaseUser user;
+  FirebaseAuth _auth = FirebaseAuth.instance;
+  var userService;
+  Future getUser() async {
+    Future.delayed(Duration.zero, () {
+      userService = Provider.of<User>(context, listen: false);
+    });
+
+    user = await _auth.currentUser();
+    if (user == null) {
+      print("No user");
+      getUser();
+    } else {
+      Firestore.instance
+          .collection('Users')
+          .document(user.uid)
+          .get()
+          .then((DocumentSnapshot ds) {
+        print(ds['image']);
+        print(ds['name']);
+        print(ds['email']);
+        userService.setImage(ds['image']);
+        userService.setUserId(user.uid);
+        userService.setUserName(ds['name']);
+        userService.setTpNumber(
+            ds['tpNumber'] == "undefined" ? "Add TP Number" : ds['tpNumber']);
+        userService.setEmail(ds['email']);
+        // setState(() {
+        //   imgurl = ds['image'];
+        //   userService.setImage(imgurl);
+        //   username = user.displayName == null
+        //       ? user.phoneNumber == null ? "Loading..." : user.phoneNumber
+        //       : user.displayName;
+
+        // userService.setUserId(user.uid);
+        // userService.setUserName(ds['name']);
+        // userService.setTpNumber(ds['tpNumber']);
+        // userService.setEmail(ds['email']);
+        // });
+      });
+    }
+  }
+
   final topBar = new AppBar(
     backgroundColor: new Color(0xfff8faf8),
     centerTitle: true,
@@ -36,7 +95,7 @@ class InstaHome extends StatelessWidget {
                     Icons.home,
                   ),
                   onPressed: () {
-                    print("object");
+                    print(userService.getimage());
                   },
                 ),
                 new IconButton(
@@ -67,9 +126,10 @@ class InstaHome extends StatelessWidget {
                 new IconButton(
                   icon: Icon(
                     Icons.account_box,
+                    color: Colors.green,
                   ),
                   onPressed: () {
-                    print("object");
+                    Navigator.of(context).pushNamed('/profile');
                   },
                 ),
               ],
