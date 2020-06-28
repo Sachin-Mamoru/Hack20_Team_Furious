@@ -15,8 +15,8 @@ class OrderService with ChangeNotifier {
     notifyListeners();
   }
 
-  Future<bool> createOrder(objective, name, image, contact_name, aim, email,
-      phone, price, service) async {
+  Future<bool> createOrder(objective, name, description, image, contact_name,
+      aim, email, phone, price, service, img) async {
     try {
       String userId;
       await FirebaseAuth.instance
@@ -26,6 +26,7 @@ class OrderService with ChangeNotifier {
       var document = await Firestore.instance.collection('Project').add({
         'objective': objective,
         'name': name,
+        'description': description,
         'image': image,
         'contact_name': contact_name,
         'aim': aim,
@@ -35,6 +36,7 @@ class OrderService with ChangeNotifier {
         'price': price,
         'service': service,
         'userId': userId,
+        'user_image': img
       });
       setOrderId(document.documentID);
       return true;
@@ -58,6 +60,7 @@ class OrderService with ChangeNotifier {
         this._order = new Order(
           document.data['objective'],
           document.data['name'],
+          document.data['description'],
           document.data['image'],
           document.data['contact_name'],
           document.data['aim'],
@@ -76,8 +79,8 @@ class OrderService with ChangeNotifier {
     }
   }
 
-  Future<bool> updateOrder(objective, name, image, contact_name, aim, email,
-      phone, price, service) async {
+  Future<bool> updateOrder(objective, name, description, image, contact_name,
+      aim, email, phone, price, service) async {
     try {
       await Firestore.instance
           .collection('Project')
@@ -85,6 +88,7 @@ class OrderService with ChangeNotifier {
           .updateData({
         'objective': objective,
         'name': name,
+        'description': description,
         'image': image,
         'contact_name': contact_name,
         'aim': aim,

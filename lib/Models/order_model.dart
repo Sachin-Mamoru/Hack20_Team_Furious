@@ -1,6 +1,7 @@
 class Order {
   String objective;
   String name;
+  String description;
   String image;
   String contact_name;
   String aim;
@@ -11,10 +12,11 @@ class Order {
   int service;
   String userId;
 
-  Order(objective, name, image, contact_name, aim, email, date, phone, price,
-      service, userId) {
+  Order(objective, name, description, image, contact_name, aim, email, date,
+      phone, price, service, userId) {
     this.objective = objective;
     this.name = name;
+    this.description = description;
     this.image = image;
     this.contact_name = contact_name;
     this.aim = aim;

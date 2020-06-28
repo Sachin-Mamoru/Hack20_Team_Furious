@@ -1,3 +1,4 @@
+import 'package:Team_Furious/Models/user_model.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:Team_Furious/Models/order_model.dart';
@@ -19,7 +20,6 @@ class _OrderFormState extends State<OrderForm> {
   int quantity;
   int price;
   int service;
-  bool verifed = false;
   String project_name;
   String contact_name;
   String email;
@@ -27,8 +27,47 @@ class _OrderFormState extends State<OrderForm> {
   String objective;
   String phone;
   String image;
+  String description;
 
-  void _showDialog(OrderService orderService) {
+  @override
+  Widget build(BuildContext context) {
+    // var orderService = Provider.of<OrderService>(context);
+    // Order order;
+    // if (widget.update) {
+    //   order = orderService.getOrder();
+    // }
+    var userService = Provider.of<User>(context);
+
+    return ChangeNotifierProvider<OrderService>(
+      create: (context) => OrderService(),
+      child: Consumer<OrderService>(
+        builder: (context, provider, child) => Scaffold(
+          appBar: AppBar(
+            title: Text('Project Form'),
+          ),
+          body: SingleChildScrollView(
+            child: Column(
+              children: <Widget>[
+                Container(
+                  child: img(provider.getOrder()),
+                  margin: EdgeInsets.all(20.0),
+                ),
+                Center(
+                  child: Container(
+                    child: formBody(provider.getOrder(), provider, userService),
+                    width: 300.0,
+                    margin: EdgeInsets.all(20.0),
+                  ),
+                )
+              ],
+            ),
+          ),
+        ),
+      ),
+    );
+  }
+
+  void _showDialog(OrderService orderService, var userService) {
     showDialog(
       context: context,
       builder: (BuildContext context) {
@@ -38,9 +77,24 @@ class _OrderFormState extends State<OrderForm> {
             new FlatButton(
               child: new Text("YES"),
               onPressed: () {
-                orderService.updateOrder(objective, project_name, image,
-                    contact_name, aim, email, phone, price, service);
-                Navigator.pushNamed(context, '/home');
+                if (widget.update) {
+                  orderService.updateOrder(objective, project_name, description,
+                      image, contact_name, aim, email, phone, price, service);
+                } else {
+                  orderService.createOrder(
+                      objective,
+                      project_name,
+                      description,
+                      image,
+                      contact_name,
+                      aim,
+                      email,
+                      phone,
+                      price,
+                      service,
+                      userService.getimage());
+                }
+                Navigator.pushNamed(context, '/dashboard');
               },
             ),
             new FlatButton(
@@ -55,7 +109,7 @@ class _OrderFormState extends State<OrderForm> {
     );
   }
 
-  Widget formBody(Order order, OrderService orderService) {
+  Widget formBody(Order order, OrderService orderService, var userService) {
     return Form(
       key: _formKey,
       child: Column(
@@ -86,6 +140,41 @@ class _OrderFormState extends State<OrderForm> {
                   decoration: new InputDecoration(
                     labelText: "Project Name",
                     hintText: 'Project Name',
+                  ),
+                  keyboardType: TextInputType.text,
+                ),
+              ),
+            ],
+          ),
+          SizedBox(
+            height: 30.0,
+          ),
+          Row(
+            children: <Widget>[
+              Container(
+                width: 130.0,
+                child: Text(
+                  'Project Description',
+                  style: TextStyle(fontWeight: FontWeight.bold),
+                ),
+              ),
+              Text(' : '),
+              Container(
+                width: 150.0,
+                child: TextFormField(
+                  initialValue: widget.update ? order.aim.toString() : null,
+                  autocorrect: false,
+                  onSaved: (String value) {
+                    description = value;
+                  },
+                  validator: (value) {
+                    if (value.isEmpty) {
+                      return 'Please enter valid description';
+                    }
+                  },
+                  decoration: new InputDecoration(
+                    labelText: "Project description",
+                    hintText: 'Project description',
                   ),
                   keyboardType: TextInputType.text,
                 ),
@@ -362,7 +451,7 @@ class _OrderFormState extends State<OrderForm> {
                 final FormState formState = _formKey.currentState;
                 if (formState.validate()) {
                   formState.save();
-                  _showDialog(orderService);
+                  _showDialog(orderService, userService);
                 }
               },
             ),
@@ -380,38 +469,6 @@ class _OrderFormState extends State<OrderForm> {
           : NetworkImage(
               'https://www.simrad-yachting.com/assets/img/default-product-img.png'),
       backgroundColor: Colors.transparent,
-    );
-  }
-
-  @override
-  Widget build(BuildContext context) {
-    var orderService = Provider.of<OrderService>(context);
-    Order order;
-    if (widget.update) {
-      order = orderService.getOrder();
-    }
-
-    return Scaffold(
-      appBar: AppBar(
-        title: Text('Project Form'),
-      ),
-      body: SingleChildScrollView(
-        child: Column(
-          children: <Widget>[
-            Container(
-              child: img(order),
-              margin: EdgeInsets.all(20.0),
-            ),
-            Center(
-              child: Container(
-                child: formBody(order, orderService),
-                width: 300.0,
-                margin: EdgeInsets.all(20.0),
-              ),
-            )
-          ],
-        ),
-      ),
     );
   }
 }
