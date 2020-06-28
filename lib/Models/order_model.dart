@@ -7,7 +7,7 @@ class Order {
   String aim;
   String email;
   var date;
-  int phone;
+  String phone;
   int price;
   int service;
   String userId;

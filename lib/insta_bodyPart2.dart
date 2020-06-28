@@ -3,6 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:provider/provider.dart';
 
+import 'Models/user_model.dart';
+
 class CategeoryCard extends StatelessWidget {
   final DocumentSnapshot dc;
   final String documentID;
@@ -14,8 +16,10 @@ class CategeoryCard extends StatelessWidget {
     return GestureDetector(
       onTap: () {
         print(documentID);
-        //   supplierOrderService.setCategory(documentID);
-
+        var userService = Provider.of<User>(context);
+        userService.setOrderId(documentID);
+        userService.setOrder();
+        Navigator.pushNamed(context, '/project');
         //   Navigator.push(context,
         //       MaterialPageRoute(builder: (context) => SubCategoery(documentID)));
       },
@@ -103,7 +107,7 @@ class CategeoryCard extends StatelessWidget {
                         print("object");
                       },
                       color: Colors.blue,
-                      child: Text(dc.data['price'],
+                      child: Text(dc.data['price'].toString(),
                           style: TextStyle(
                               fontWeight: FontWeight.bold,
                               color: Colors.white)),

@@ -1,3 +1,4 @@
+import 'package:Team_Furious/Models/user_model.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:Team_Furious/Models/order_model.dart';
@@ -10,7 +11,7 @@ class OrderFormTwo extends StatefulWidget {
 }
 
 class _OrderFormTwoState extends State<OrderFormTwo> {
-  Widget formBody(Order order, OrderService orderService) {
+  Widget formBody(Order order, var orderService) {
     return Column(
       children: <Widget>[
         Row(
@@ -26,6 +27,25 @@ class _OrderFormTwoState extends State<OrderFormTwo> {
             Container(
               width: 150.0,
               child: Text(order.name),
+            ),
+          ],
+        ),
+        SizedBox(
+          height: 30.0,
+        ),
+        Row(
+          children: <Widget>[
+            Container(
+              width: 130.0,
+              child: Text(
+                'Project Description',
+                style: TextStyle(fontWeight: FontWeight.bold),
+              ),
+            ),
+            Text(' : '),
+            Container(
+              width: 150.0,
+              child: Text(order.description),
             ),
           ],
         ),
@@ -176,9 +196,9 @@ class _OrderFormTwoState extends State<OrderFormTwo> {
 
   @override
   Widget build(BuildContext context) {
-    var orderService2 = Provider.of<OrderService>(context);
+    var userService = Provider.of<User>(context);
 
-    Order order = orderService2.getOrder();
+    var order = userService.getOrder();
 
     return Scaffold(
       appBar: AppBar(
@@ -194,7 +214,7 @@ class _OrderFormTwoState extends State<OrderFormTwo> {
                   ),
                   Center(
                     child: Container(
-                      child: formBody(order, orderService2),
+                      child: formBody(order, userService),
                       width: 300.0,
                       margin: EdgeInsets.all(20.0),
                     ),
