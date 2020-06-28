@@ -94,6 +94,7 @@ class OrderService with ChangeNotifier {
         'price': price,
         'service': service,
       });
+      return true;
     } catch (e) {
       print(e);
       return false;

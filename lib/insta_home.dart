@@ -6,6 +6,7 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
 import 'Models/user_model.dart';
+import 'insta_bodyPart1.dart';
 
 class InstaHome extends StatefulWidget {
   @override
@@ -81,7 +82,7 @@ class _InstaHomeState extends State<InstaHome> {
   Widget build(BuildContext context) {
     return new Scaffold(
         appBar: topBar,
-        body: new InstaBody(),
+        body: new AddOrderMain(),
         bottomNavigationBar: new Container(
           color: Colors.white,
           height: 50.0,

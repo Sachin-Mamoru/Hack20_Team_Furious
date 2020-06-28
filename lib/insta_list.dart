@@ -1,4 +1,3 @@
-import 'package:Team_Furious/insta_stories.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
@@ -11,7 +10,6 @@ class InstaList extends StatelessWidget {
       itemCount: 5,
       itemBuilder: (context, index) => index == 0
           ? new SizedBox(
-              child: new InstaStories(),
               height: deviceSize.height * 0.15,
             )
           : Column(
@@ -20,7 +18,7 @@ class InstaList extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.stretch,
               children: <Widget>[
                 Padding(
-                  padding: const EdgeInsets.fromLTRB(16.0, 16.0, 8.0, 16.0),
+                  padding: const EdgeInsets.fromLTRB(16.0, 0.0, 8.0, 16.0),
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: <Widget>[
@@ -97,45 +95,40 @@ class InstaList extends StatelessWidget {
                 Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 16.0),
                   child: Text(
-                    "Liked by pawankumar, pk and 528,331 others",
+                    "Description ddsfsfsfs",
                     style: TextStyle(fontWeight: FontWeight.bold),
                   ),
                 ),
-                Padding(
-                  padding: const EdgeInsets.fromLTRB(16.0, 16.0, 0.0, 8.0),
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.start,
-                    children: <Widget>[
-                      new Container(
-                        height: 40.0,
-                        width: 40.0,
-                        decoration: new BoxDecoration(
-                          shape: BoxShape.circle,
-                          image: new DecorationImage(
-                              fit: BoxFit.fill,
-                              image: new NetworkImage(
-                                  "https://pbs.twimg.com/profile_images/916384996092448768/PF1TSFOE_400x400.jpg")),
-                        ),
-                      ),
-                      new SizedBox(
-                        width: 10.0,
-                      ),
-                      Expanded(
-                        child: new TextField(
-                          decoration: new InputDecoration(
-                            border: InputBorder.none,
-                            hintText: "Add a comment...",
-                          ),
-                        ),
-                      ),
-                    ],
-                  ),
-                ),
-                Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 16.0),
-                  child:
-                      Text("1 Day Ago", style: TextStyle(color: Colors.grey)),
-                )
+                // Padding(
+                //   padding: const EdgeInsets.fromLTRB(16.0, 16.0, 0.0, 8.0),
+                //   child: Row(
+                //     mainAxisAlignment: MainAxisAlignment.start,
+                //     children: <Widget>[
+                //       new Container(
+                //         height: 40.0,
+                //         width: 40.0,
+                //         decoration: new BoxDecoration(
+                //           shape: BoxShape.circle,
+                //           image: new DecorationImage(
+                //               fit: BoxFit.fill,
+                //               image: new NetworkImage(
+                //                   "https://pbs.twimg.com/profile_images/916384996092448768/PF1TSFOE_400x400.jpg")),
+                //         ),
+                //       ),
+                //       new SizedBox(
+                //         width: 10.0,
+                //       ),
+                //       Expanded(
+                //         child: new TextField(
+                //           decoration: new InputDecoration(
+                //             border: InputBorder.none,
+                //             hintText: "Add a comment...",
+                //           ),
+                //         ),
+                //       ),
+                //     ],
+                //   ),
+                // ),
               ],
             ),
     );
