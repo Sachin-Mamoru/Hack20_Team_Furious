@@ -1,4 +1,5 @@
 import 'package:Team_Furious/insta_body.dart';
+import 'package:Team_Furious/project_form/orderForm.dart';
 import 'package:flutter/material.dart';
 
 class InstaHome extends StatelessWidget {
@@ -53,7 +54,8 @@ class InstaHome extends StatelessWidget {
                     color: Colors.red,
                   ),
                   onPressed: () {
-                    print("object");
+                    Navigator.of(context).push(MaterialPageRoute(
+                        builder: (context) => new OrderForm(update: false)));
                   },
                 ),
                 new IconButton(
