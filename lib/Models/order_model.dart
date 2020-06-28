@@ -1,32 +1,28 @@
 class Order {
-  String categoryId;
-  String categoryName;
-  String categoryImage;
-  String subCategoryId;
-  String subCategoryName;
-  String subCategoryImage;
+  String objective;
+  String name;
+  String image;
+  String contact_name;
+  String aim;
+  String email;
   var date;
-  int pricePerKg;
-  int quantity;
-  String product;
+  int phone;
+  int price;
+  int service;
   String userId;
-  String note;
-  String status;
 
-  Order(categoryId, categoryName, categoryImage, subCategoryId, subCategoryName, subCategoryImage, date, pricePerKg, quantity, product, userId,
-      note, status) {
-    this.categoryId = categoryId;
-    this.categoryName = categoryName;
-    this.categoryImage = categoryImage;
-    this.subCategoryId = subCategoryId;
-    this.subCategoryName = subCategoryName;
-    this.subCategoryImage = subCategoryImage;
+  Order(objective, name, image, contact_name, aim, email, date, phone, price,
+      service, userId) {
+    this.objective = objective;
+    this.name = name;
+    this.image = image;
+    this.contact_name = contact_name;
+    this.aim = aim;
+    this.email = email;
     this.date = date;
-    this.pricePerKg = pricePerKg;
-    this.quantity = quantity;
-    this.product = product;
+    this.phone = phone;
+    this.price = price;
+    this.service = service;
     this.userId = userId;
-    this.note = note;
-    this.status = status;
   }
 }

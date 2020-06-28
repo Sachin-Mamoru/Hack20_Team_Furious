@@ -16,8 +16,8 @@ class OrderService with ChangeNotifier {
 
   Future<bool> setOrder() async {
     try {
-      var Firestore;//wefweffewrfweffwfefwefwefewfeeeeeeeeeeeeeeeeee
-            var document = await Firestore.instance
+      var Firestore; //wefweffewrfweffwfefwefwefewfeeeeeeeeeeeeeeeeee
+      var document = await Firestore.instance
           .collection('Orders')
           .document(getOrderId())
           .get();
@@ -27,19 +27,18 @@ class OrderService with ChangeNotifier {
       } else {
         notifyListeners();
         this._order = new Order(
-            document.data['categoryId'],
-            document.data['categoryName'],
-            document.data['categoryImage'],
-            document.data['subCategoryId'],
-            document.data['subCategoryName'],
-            document.data['subCategoryImage'],
-            document.data['date'],
-            document.data['pricePerKg'],
-            document.data['quantity'],
-            document.data['product'],
-            document.data['userId'],
-            document.data['note'],
-            document.data['status']);
+          document.data['objective'],
+          document.data['name'],
+          document.data['image'],
+          document.data['contact_name'],
+          document.data['aim'],
+          document.data['email'],
+          document.data['date'],
+          document.data['phone'],
+          document.data['price'],
+          document.data['service'],
+          document.data['userId'],
+        );
         return true;
       }
     } catch (e) {
@@ -50,15 +49,12 @@ class OrderService with ChangeNotifier {
 
   Future<bool> updateOrder(quantity, price, status) async {
     try {
-      var Firestore;/////////////////////////////////////////////////////////////////////
-            await Firestore.instance
+      var Firestore; /////////////////////////////////////////////////////////////////////
+      await Firestore.instance
           .collection('Orders')
           .document(getOrderId())
-          .updateData({
-        'quantity': quantity,
-        'pricePerKg': price,
-        'status': status
-      });
+          .updateData(
+              {'quantity': quantity, 'pricePerKg': price, 'status': status});
     } catch (e) {
       print(e);
       return false;
