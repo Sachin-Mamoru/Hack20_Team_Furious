@@ -1,3 +1,4 @@
+import 'package:Team_Furious/Models/user_model.dart';
 import 'package:Team_Furious/insta_home.dart';
 import 'package:Team_Furious/services/orderService.dart';
 import 'package:flutter/material.dart';
@@ -17,6 +18,7 @@ class MyApp extends StatelessWidget {
     return MultiProvider(
       providers: [
         ChangeNotifierProvider(create: (context) => OrderService()),
+        ChangeNotifierProvider(create: (context) => User()),
       ],
       child: MaterialApp(
         title: 'Instagram',
