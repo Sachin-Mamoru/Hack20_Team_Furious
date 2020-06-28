@@ -11,7 +11,7 @@ class AddOrderMain extends StatelessWidget {
   Widget build(BuildContext context) {
     return new StreamBuilder<QuerySnapshot>(
         stream: db
-            .collection('Project')
+            .collection('Project').orderBy('date', descending: true)
             // .document('1')
             // .collection('SubCategories')
             .snapshots(),

@@ -96,7 +96,7 @@ class CategeoryCard extends StatelessWidget {
                         print("object");
                       },
                       color: Colors.blue,
-                      child: Text(dc.data['price'].toString(),
+                      child: Text('Rs. '+dc.data['price'].toString(),
                           style: TextStyle(
                               fontWeight: FontWeight.bold,
                               color: Colors.white)),
