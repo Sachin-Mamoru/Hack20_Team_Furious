@@ -3,6 +3,8 @@ import 'package:Team_Furious/services/orderService.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
+import 'login.dart';
+
 void main() {
   Provider.debugCheckInvalidValueType = null;
   runApp(MyApp());
@@ -18,6 +20,9 @@ class MyApp extends StatelessWidget {
       ],
       child: MaterialApp(
         title: 'Instagram',
+        routes: <String, WidgetBuilder>{
+          '/dashboard': (BuildContext context) => new InstaHome(),
+        },
         debugShowCheckedModeBanner: false,
         theme: new ThemeData(
             primarySwatch: Colors.blue,
@@ -26,7 +31,7 @@ class MyApp extends StatelessWidget {
             primaryTextTheme: TextTheme(
                 title: TextStyle(color: Colors.black, fontFamily: "Aveny")),
             textTheme: TextTheme(title: TextStyle(color: Colors.black))),
-        home: new InstaHome(),
+        home: new Login(),
       ),
     );
   }
