@@ -47,6 +47,7 @@ class OrderService with ChangeNotifier {
   }
 
   Future<bool> setOrder() async {
+    
     try {
       var document = await Firestore.instance
           .collection('Project')
@@ -56,7 +57,6 @@ class OrderService with ChangeNotifier {
         notifyListeners();
         return true;
       } else {
-        notifyListeners();
         this._order = new Order(
           document.data['objective'],
           document.data['name'],
@@ -71,6 +71,8 @@ class OrderService with ChangeNotifier {
           document.data['service'],
           document.data['userId'],
         );
+        print('set order');
+        notifyListeners();
         return true;
       }
     } catch (e) {

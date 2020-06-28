@@ -1,6 +1,7 @@
 import 'package:Team_Furious/Models/user_model.dart';
 import 'package:Team_Furious/insta_home.dart';
 import 'package:Team_Furious/profile.dart';
+import 'package:Team_Furious/project_data/orderForm2.dart';
 import 'package:Team_Furious/project_form/orderForm.dart';
 import 'package:Team_Furious/services/orderService.dart';
 import 'package:flutter/material.dart';
@@ -30,6 +31,7 @@ class MyApp extends StatelessWidget {
           '/save': (BuildContext context) => new OrderForm(
                 update: false,
               ),
+          '/project': (BuildContext context) => new OrderFormTwo(),
         },
         debugShowCheckedModeBanner: false,
         theme: new ThemeData(

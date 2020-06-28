@@ -216,7 +216,7 @@ class _OrderFormState extends State<OrderForm> {
                   initialValue: widget.update ? order.aim.toString() : null,
                   autocorrect: false,
                   onSaved: (String value) {
-                    project_name = value;
+                    aim = value;
                   },
                   validator: (value) {
                     if (value.isEmpty) {
@@ -252,7 +252,7 @@ class _OrderFormState extends State<OrderForm> {
                       widget.update ? order.objective.toString() : null,
                   autocorrect: false,
                   onSaved: (String value) {
-                    project_name = value;
+                    objective = value;
                   },
                   validator: (value) {
                     if (value.isEmpty) {
