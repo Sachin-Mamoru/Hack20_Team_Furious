@@ -44,7 +44,7 @@ class _InstaHomeState extends State<InstaHome> {
         userService.setUserId(user.uid);
         userService.setUserName(ds['name']);
         userService.setTpNumber(
-            ds['tpNumber'] == "undefined" ? "Add TP Number" : ds['tpNumber']);
+            ds['tpNumber'] == "Undefined" ? "Add a TP Number" : ds['tpNumber']);
         userService.setEmail(ds['email']);
         // setState(() {
         //   imgurl = ds['image'];

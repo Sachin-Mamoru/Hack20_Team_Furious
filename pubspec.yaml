@@ -33,6 +33,8 @@ dependencies:
   google_sign_in:
   firebase_auth:
   auto_size_text:
+  image_picker:
+  firebase_storage:
 
 dev_dependencies:
   flutter_test:

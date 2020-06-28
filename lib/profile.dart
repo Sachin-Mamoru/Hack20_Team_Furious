@@ -1,3 +1,4 @@
+import 'package:Team_Furious/profileImageUpload.dart';
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
@@ -255,15 +256,15 @@ class _ProfileManagementState extends State<ProfileManagement> {
           iconSize: 50.0,
           onPressed: () async {
             print("Add a new foto");
-            // final result = await Navigator.push(
-            //   context,
-            //   MaterialPageRoute(builder: (context) => ImageUpload()),
-            // );
-            // if (result != null) {
-            //   setState(() {
-            //     changedImageUrl = result;
-            //   });
-            // }
+            final result = await Navigator.push(
+              context,
+              MaterialPageRoute(builder: (context) => ProfileImageUpload()),
+            );
+            if (result != null) {
+              setState(() {
+                changedImageUrl = result;
+              });
+            }
             // Navigator.push(
             //   context,
             //   MaterialPageRoute(
