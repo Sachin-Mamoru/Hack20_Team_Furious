@@ -39,10 +39,10 @@ class _LoginState extends State<Login> {
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: <Widget>[
-                Text("Welcome Project App",
+                Text("Welcome Innova",
                     style: TextStyle(
-                        color: Colors.black,
-                        fontSize: 40.0,
+                        color: Colors.white,
+                        fontSize: 60.0,
                         fontFamily: "Billabong",
                         fontWeight: FontWeight.bold)),
                 SizedBox(
@@ -68,6 +68,14 @@ class _LoginState extends State<Login> {
                     ),
                   ),
                 ),
+                SizedBox(
+                  height: 5.0,
+                ),
+                Text("(Click Google to Get Started)",
+                    style: TextStyle(
+                        color: Colors.white,
+                        fontSize: 10.0,
+                        fontWeight: FontWeight.bold)),
               ],
             ),
           ),
