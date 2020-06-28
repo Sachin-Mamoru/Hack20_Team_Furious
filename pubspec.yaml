@@ -32,6 +32,7 @@ dependencies:
   cloud_firestore:
   google_sign_in:
   firebase_auth:
+  auto_size_text:
 
 dev_dependencies:
   flutter_test:
