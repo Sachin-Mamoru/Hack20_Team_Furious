@@ -1,4 +1,6 @@
 // import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:Team_Furious/Models/order_model.dart';
 
@@ -18,13 +20,11 @@ class OrderService with ChangeNotifier {
       phone, price, service) async {
     try {
       String userId;
-      var FirebaseAuth; //erffffffffffffffffffffffffffffffffffffffffffffffffff
       await FirebaseAuth.instance
           .currentUser()
           .then((response) => {userId = response.uid});
 
-      var Firestore; //dwfwdffffffffffffffffffffffffffffffffff
-      var document = await Firestore.instance.collection('Orders').add({
+      var document = await Firestore.instance.collection('Project').add({
         'objective': objective,
         'name': name,
         'image': image,
@@ -47,9 +47,8 @@ class OrderService with ChangeNotifier {
 
   Future<bool> setOrder() async {
     try {
-      var Firestore; //wefweffewrfweffwfefwefwefewfeeeeeeeeeeeeeeeeee
       var document = await Firestore.instance
-          .collection('Orders')
+          .collection('Project')
           .document(getOrderId())
           .get();
       if (document.data == null) {
@@ -81,9 +80,8 @@ class OrderService with ChangeNotifier {
   Future<bool> updateOrder(objective, name, image, contact_name, aim, email,
       phone, price, service) async {
     try {
-      var Firestore; /////////////////////////////////////////////////////////////////////
       await Firestore.instance
-          .collection('Orders')
+          .collection('Project')
           .document(getOrderId())
           .updateData({
         'objective': objective,
