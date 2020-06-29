@@ -1,10 +1,15 @@
-# Team_Furious
+# #Hack20 - Online International Flutter Hackathon 2020
+# Project Innova by Team Furious
 
-A new Flutter project.
+Innova is an enhanced mobile platform to provide a collaborative environment for highly motivated innovators. This platform provides an intensive support to publish their ideas, products, and proposal among the enthusiastic.
+
+Aim - A community platform for both buyers and sellers/innovators in field of health which encourage youth for innovative products.
+
+Objectives - Seller / Innovators can add Their Products for Sell, Accelerate the Innovation, Direct Customer Seller Communication, Updates about New Products in the field of Health
+
+Tech Stack - Flutter, Firebase
 
 ## Getting Started
-
-This project is a starting point for a Flutter application.
 
 A few resources to get you started if this is your first Flutter project:
 
